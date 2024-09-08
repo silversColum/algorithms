@@ -1,0 +1,45 @@
+public int GetFishAge(Fish fish)
+{
+  return fish.Age;
+}
+
+//o1 example
+//no loop
+//it doesn't loop or does any math that has to do with the size of an input.
+//getting the property for the object (cough cough fish.Age) is a fixed-time operation in C# so it is not going to take longer if like the fish is older or something cause it isnt looping or doing complicated math
+
+public int CountTheOldFish(Fish[] fishes)
+{
+  int count = 0;
+  foreach (var fish in fishes){
+    if (fish.Age >= 100){
+      count++;
+    }
+  }
+  return count;
+}
+// o(n) example
+//one loop
+//time it takes to run the method goes up proportionally with how big the input is
+//i loop through each fish in the array
+//the number of operations gets bigger proportionally with the size of the array
+
+public List<Fish> makeFishyFriends(Fish[] fishes)
+{
+  List<Fish> fishes2 = new List<Fish>();
+  for (int i = 0; i < fishes.Length; i++){
+    for (int num= i + 1; num < fishes.Length; num++){
+      if (fishes[i].Color == fishes[num].Color){
+          fishes2.Add(fishes[i]);
+          fishes2.Add(fishes[num]);
+      }
+    }
+  }
+  return fishes2;
+}
+
+//o(n^2) example
+//two loops
+//1st loop runs every fish in the array
+//2nd loop starts from num = i + 1 /// aaand it compares each pair of the fish in the array
+//the time is proportional to the square of the number of fish because it is doing two loops / so its o(n^2)
